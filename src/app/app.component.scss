@@ -1,0 +1,16 @@
+
+.ng-submitted .ng-invalid,
+.ng-invalid.ng-touched,
+.ng-invalid.ng-dirty {
+  border-color: #ff0000;
+}
+
+input.isAddressSame:enabled {
+  outline: 2px solid #074d9c;
+  outline-offset: -2px;
+}
+input.isAddressSame:disabled {
+  outline: 2px solid #fc1313;
+  outline-offset: -2px;
+}
+
