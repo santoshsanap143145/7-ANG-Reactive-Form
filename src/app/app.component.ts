@@ -6,6 +6,7 @@ import { EmpIdValidator } from './shared/const/validators/empIdValidator';
 import { Icountry } from './shared/models/country';
 import { COUNTRIES_META_DATA } from './shared/const/country/countries';
 import { STATES_AND_UTS } from './shared/const/country/states';
+import { AsyncEmailValidator } from './shared/const/validators/asyncEmailValidator';
 
 @Component({
   selector: 'app-root',
@@ -45,6 +46,8 @@ export class AppComponent implements OnInit {
         Validators.required,
         Validators.pattern(CustomRegex.email),
         NoSpaceBarValidator.noSpace,
+      ], [
+        AsyncEmailValidator.isEmailAvailable
       ]),
       empId: new FormControl(null, [
         Validators.required,
@@ -172,13 +175,13 @@ export class AppComponent implements OnInit {
       // this.signUpForms.reset();
       let val = {...this.signUpForms.getRawValue}
     }
-    console.log(this.signUpForms.value.dependents);
-    this.signUpForms.value.dependents = this.signUpForms.value.dependents.map((d: any) => {
-      return {
-        ...d,
-        isTravelingWithYou : d.isTravelingWithYou == 'yes' ? true : false
-      }
-    })
+    // console.log(this.signUpForms.value.dependents);
+    // this.signUpForms.value.dependents = this.signUpForms.value.dependents.map((d: any) => {
+    //   return {
+    //     ...d,
+    //     isTravelingWithYou : d.isTravelingWithYou == 'yes' ? true : false
+    //   }
+    // })
     
   }
 

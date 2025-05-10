@@ -67,11 +67,25 @@
             Email Id is required field.
           </strong>
 
+          <div
+            *ngIf="f['email'].pending"
+            class="spinner-border spinner-border-sm text-primary mt-1 ml-2"
+            role="status"
+          >
+            <span class="sr-only">Loading...</span>
+          </div>
+          <strong
+            *ngIf="f['email'].dirty && f['email'].hasError('emailExistErr')"
+            class="text-danger"
+          >
+            {{f['email'].errors?.['emailExistErr']}}.
+          </strong>
+          <strong *ngIf="f['email'].dirty && f['email'].valid" class="text-success">This Email id is available</strong>
+
           <ng-container *ngIf="f['email'].dirty">
             <strong class="text-danger" *ngIf="f['email'].hasError('pattern')">
               Invalid email pattern.
             </strong>
-
             <strong
               *ngIf="f['email'].hasError('noSpaceBar')"
               class="text-danger"
@@ -307,11 +321,11 @@
                   placeholder="Is traveling With You?"
                   class="form-control"
                 >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <!-- <option value="yes">Yes</option>
+                  <option value="no">No</option> -->
 
-                  <!-- <option [ngValue]="true">Yes</option>
-                  <option [ngValue]="false">No</option> -->
+                  <option [ngValue]="true">Yes</option>
+                  <option [ngValue]="false">No</option>
                 </select>
               </div>
             </div>
